@@ -16,6 +16,25 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
+
+        tasks.register("createSchemaDir") {
+            doLast {
+                val schemaDir = File("$projectDir/schemas")
+                if (!schemaDir.exists()) {
+                    schemaDir.mkdirs()
+                }
+            }
+        }
+
+        tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+            dependsOn("createSchemaDir")
+        }
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -71,4 +90,5 @@ dependencies {
     implementation(libs.room.db)
     kapt(libs.room.db.compiler)
     implementation(libs.kotlin.coroutines)
+    implementation(libs.room.ktx)
 }

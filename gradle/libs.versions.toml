@@ -8,7 +8,7 @@ espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.8.1"
 activityCompose = "1.9.0"
 composeBom = "2023.08.00"
-hiltAndroid = "2.44"
+hiltAndroid = "2.50"
 roomDb = "2.6.1"
 coroutines = "1.3.9"
 navigationCompose = "2.8.0-alpha07"
@@ -35,6 +35,7 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltAndroid" }
 room-db = { group = "androidx.room", name = "room-runtime", version.ref = "roomDb" }
 room-db-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomDb" }
+room-ktx = {group = "androidx.room", name = "room-ktx", version.ref = "roomDb"}
 kotlin-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines"}
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-animation = { group = "androidx.compose.animation", name = "animation", version.ref = "animationCompose" }
@@ -44,4 +45,3 @@ androidx-foundation = { group = "androidx.compose.foundation", name = "foundatio
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 hiltAndroidPlugin = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
-

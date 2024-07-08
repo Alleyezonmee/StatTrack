@@ -7,12 +7,9 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.soulinc.stattrack.data.StatTrackViewModel
-import com.soulinc.stattrack.ui.components.TrackingFeed
 import com.soulinc.stattrack.ui.theme.StatTrackTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,8 +21,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             StatTrackTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    TrackingFeed()
+                Surface(
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
+                ) {
+                    val state = viewModel.trackAbles.collectAsState(initial = emptyList())
                 }
             }
         }
