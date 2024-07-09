@@ -10,8 +10,12 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import com.soulinc.stattrack.data.StatTrackViewModel
+import com.soulinc.stattrack.ui.components.StatTrackContainer
+import com.soulinc.stattrack.ui.components.TrackAblesFeed
 import com.soulinc.stattrack.ui.theme.StatTrackTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val viewModel by viewModels<StatTrackViewModel>()
@@ -24,9 +28,10 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
-                    val state = viewModel.trackAbles.collectAsState(initial = emptyList())
+                    StatTrackContainer(viewModel = viewModel)
                 }
             }
         }
+        viewModel.fetchTrackAbles()
     }
 }

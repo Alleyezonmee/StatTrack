@@ -9,4 +9,6 @@ interface TrackAblesRepo {
     suspend fun addTrackAble(data: Trackable)
 
     suspend fun removeTrackAble(data: Trackable)
+
+    suspend fun updateTrackAble(data: Trackable)
 }

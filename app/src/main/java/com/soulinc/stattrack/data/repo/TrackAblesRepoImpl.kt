@@ -12,19 +12,32 @@ class TrackAblesRepoImpl @Inject constructor(private val trackDbSource: TrackAbl
     }
 
     override suspend fun addTrackAble(data: Trackable) {
-        trackDbSource.addTrackAble(TrackableEntity(
-            id = data.id,
-            name = data.name,
-            description = data.description,
-            progress = data.progress.progress.toFloat(),
-            trackAbleType = data.name
-        ))
+        trackDbSource.addTrackAble(
+            TrackableEntity(
+                name = data.name,
+                description = data.description,
+                progress = data.progress.progress.toFloat(),
+                trackAbleType = data.name
+            )
+        )
     }
 
     override suspend fun removeTrackAble(data: Trackable) {
         data.id?.let {
             trackDbSource.deleteTrackAble(it)
         }
+    }
+
+    override suspend fun updateTrackAble(data: Trackable) {
+        trackDbSource.updateTrackAble(
+            TrackableEntity(
+                id = data.id,
+                name = data.name,
+                description = data.description,
+                progress = data.progress.progress.toFloat(),
+                trackAbleType = data.name
+            )
+        )
     }
 
 }
